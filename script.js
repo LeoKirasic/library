@@ -46,7 +46,7 @@ submitButton.addEventListener(('click'), () => {
   let read = form.elements.read;
   console.log(read.checked);
 
-  addBookToLibrary(title.value, author.value, pages.value, read.value);
+  addBookToLibrary(title.value, author.value, pages.value, read.checked);
   displayBooks();
 
 });
