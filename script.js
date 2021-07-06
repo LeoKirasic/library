@@ -46,9 +46,14 @@ submitButton.addEventListener(('click'), () => {
   let read = form.elements.read;
   console.log(read.checked);
 
+  if(title.value === '' || author.value === '' || pages.value === '') {
+    alert(`Can't submit empty form`);
+  } else if (pages.value <0 ) {
+    alert(`Can't submit negative pages`);
+  } else {
   addBookToLibrary(title.value, author.value, pages.value, read.checked);
   displayBooks();
-
+  }
 });
 
 
