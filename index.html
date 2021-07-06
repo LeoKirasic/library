@@ -8,9 +8,36 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <button id="add-book">Add book</button>
-    <div id="form-content"></div>
+    <button data-modal-target="#modal" id="add-book">Add book</button>
+    <div id="modal" class="modal">
+        <div class="popup-header">
+            <div class="title">ADD BOOK</div>
+            <button data-close-button class="close-button">&times;</button>
+        </div>
+        <div class="popup-body">
+            <form id="form" name="form">
+                <div class="input-heading">TITLE</div>
+                <input type="text" name="title-text" id="title" class="input" value="title">
+                <br>
+                
+                <div class="input-heading">AUTHOR</div>
+                <input type="text" name="author-text" id="author" class="input" value="author">
+                <br>
+
+                <div class="input-heading">PAGES</div>
+                <input type="text" name="pages-text" id="pages" class="input" value="pages">
+                <br>
+
+                <div class="input-heading">READ</div>
+                <input type="checkbox" name="read-text" id="read" class="input" >
+                <br>
+
+                <button id="submit-button">SUBMIT</button>
+            </form>
+        </div>
+    </div>
     <div id="book-container"></div>
+    <div id="overlay"></div>
     <script src="script.js"></script>
 </body>
 </html>

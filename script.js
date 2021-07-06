@@ -34,60 +34,53 @@ function displayBooks () {
 
 displayBooks();
 
-const addBookBtn = document.querySelector('#add-book');
+const openModalButtons = document.querySelectorAll('[data-modal-target]');
+const closeModalButtons = document.querySelectorAll('[data-close-button]');
+const submitButton = document.querySelector('#submit-button');
+const overlay = document.getElementById('overlay');
 const formContent = document.querySelector('#form-content');
-addBookBtn.addEventListener(('click'), () => {
-  const form = document.createElement('form');
-  // title input
 
-  const titleHeading = document.createElement('div');
-  titleHeading.classList.add = ('form-heading');
-  titleHeading.textContent = 'TITLE';
-  form.appendChild(titleHeading);
-
-  const titleText = document.createElement('input');
-  titleText.setAttribute('type', 'titleText');
-  form.appendChild(titleText);
-  let lineBreak = document.createElement('br');
-  form.appendChild(lineBreak);
-  formContent.appendChild(form);
-  // author input
-
-  const authorHeading = document.createElement('div');
-  authorHeading.classList.add = ('form-heading');
-  authorHeading.textContent = 'AUTHOR';
-  form.appendChild(authorHeading);
-
-  const authorText = document.createElement('input');
-  titleText.setAttribute('type', 'authorText');
-  form.appendChild(authorText);
-  lineBreak = document.createElement('br');
-  form.appendChild(lineBreak);
-  formContent.appendChild(form);
-
-  // pages input
-  const pagesHeading = document.createElement('div');
-  pagesHeading.classList.add = ('form-heading');
-  pagesHeading.textContent = 'PAGES';
-  form.appendChild(pagesHeading);
-
-  const pagesText = document.createElement('input');
-  pagesText.setAttribute('type', 'pagesText');
-  form.appendChild(pagesText);
-  lineBreak = document.createElement('br');
-  form.appendChild(lineBreak);
-  formContent.appendChild(form);
-
-  // read input
-  const readHeading = document.createElement('div');
-  readHeading.classList.add = ('form-heading');
-  readHeading.textContent = 'READ';
-  form.appendChild(readHeading);
-
-  const readText = document.createElement('input');
-  readText.setAttribute('type', 'checkbox');
-  form.appendChild(readText);
-  lineBreak = document.createElement('br');
-  form.appendChild(lineBreak);
-  formContent.appendChild(form);
+submitButton.addEventListener(('click'), () => {
+  let form = document.forms.form;
+  let title = form.elements.title;
+  console.log(title.value);
+  let author = form.elements.author;
+  console.log(author.value);
+  let pages = form.elements.pages;
+  console.log(pages.value);
+  let read = form.elements.read;
+  console.log(read.checked);
 });
+
+openModalButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    const modal = document.querySelector(button.dataset.modalTarget)
+    openModal(modal)
+  })
+})
+
+overlay.addEventListener('click', () => {
+  const modals = document.querySelectorAll('.modal.active')
+  modals.forEach(modal => {
+    closeModal(modal)
+  })
+})
+
+closeModalButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    const modal = button.closest('.modal')
+    closeModal(modal)
+  })
+})
+
+function openModal (modal) {
+  if(modal == null) return 
+  modal.classList.add('active');
+  overlay.classList.add('active');
+}
+
+function closeModal (modal) {
+  if(modal == null) return 
+  modal.classList.remove('active');
+  overlay.classList.remove('active');
+}
