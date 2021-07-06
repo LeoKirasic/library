@@ -9,8 +9,9 @@ function Book (title, author, pages, read)  {
       return `${title} by ${author}, ${pages}, ${read}`;
     }
   }
-let counter = 0;
 function addBookToLibrary(title, author, pages, read) {
+let counter = 0;
+
     const book = new Book(title, author, pages, read);
     myLibrary[counter] = book;
     counter++;
