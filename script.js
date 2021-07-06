@@ -16,10 +16,10 @@ function addBookToLibrary(title, author, pages, read) {
     counter++;
 }
 
-addBookToLibrary('thehobbit', 'jk rowling', '250', 'no');
-addBookToLibrary('testbook', 'testname', 'testpages', 'yes');
-addBookToLibrary('a', 'b', 'c', 'd');
-addBookToLibrary('agasga', 'bgsaga', 'cgsag', 'dgsaga');
+// addBookToLibrary('thehobbit', 'jk rowling', '250', 'no');
+// addBookToLibrary('testbook', 'testname', 'testpages', 'yes');
+// addBookToLibrary('a', 'b', 'c', 'd');
+// addBookToLibrary('agasga', 'bgsaga', 'cgsag', 'dgsaga');
 
 const container = document.querySelector('#book-container');
 
@@ -32,13 +32,7 @@ function displayBooks () {
   }
 }
 
-displayBooks();
-
-const openModalButtons = document.querySelectorAll('[data-modal-target]');
-const closeModalButtons = document.querySelectorAll('[data-close-button]');
 const submitButton = document.querySelector('#submit-button');
-const overlay = document.getElementById('overlay');
-const formContent = document.querySelector('#form-content');
 
 submitButton.addEventListener(('click'), () => {
   let form = document.forms.form;
@@ -50,7 +44,17 @@ submitButton.addEventListener(('click'), () => {
   console.log(pages.value);
   let read = form.elements.read;
   console.log(read.checked);
+
+  addBookToLibrary(title.value, author.value, pages.value, read.value);
+  displayBooks();
+
 });
+
+
+// popup form code
+const openModalButtons = document.querySelectorAll('[data-modal-target]');
+const closeModalButtons = document.querySelectorAll('[data-close-button]');
+const overlay = document.getElementById('overlay');
 
 openModalButtons.forEach(button => {
   button.addEventListener('click', () => {
