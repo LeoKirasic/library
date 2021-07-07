@@ -9,58 +9,66 @@ function Book (title, author, pages, read)  {
       return `${title} by ${author}, ${pages} pages, read: ${read}`;
     }
   }
-function addBookToLibrary(title, author, pages, read) {
 let counter = 0;
 
+function addBookToLibrary(title, author, pages, read) {
+  
     const book = new Book(title, author, pages, read);
     myLibrary[counter] = book;
     counter++;
 }
 
-// addBookToLibrary('thehobbit', 'jk rowling', '250', 'no');
-// addBookToLibrary('testbook', 'testname', 'testpages', 'yes');
-// addBookToLibrary('a', 'b', 'c', 'd');
-// addBookToLibrary('agasga', 'bgsaga', 'cgsag', 'dgsaga');
-
 const container = document.querySelector('#book-container');
+let deleteButton = document.createElement('button');
+
+let datasetCounter = 0;
 
 function displayBooks () {
   for(let i = 0; i < myLibrary.length; i++) {
     let book = document.createElement('div');
+    let deleteButton = document.createElement('button');
+    deleteButton.classList.add('delete-button');
+    deleteButton.dataset.index = 0;
     book.classList.add('book');
+    book.dataset.index = 0;
+    deleteButton.dataset.index += parseInt(datasetCounter);
+    console.log(deleteButton.dataset.index)
     book.textContent = myLibrary[i].info();
+    book.appendChild(deleteButton);
     container.appendChild(book);
+
+    book.dataset.index += parseInt(datasetCounter);
+    datasetCounter++;
+    
   }
 }
+
+  //TODO something is bugged in either submitButton listener or displayBooks function 
 
 const submitButton = document.querySelector('#submit-button');
 
 submitButton.addEventListener(('click'), () => {
   let form = document.forms.form;
   let title = form.elements.title;
-  console.log(title.value);
   let author = form.elements.author;
-  console.log(author.value);
   let pages = form.elements.pages;
-  console.log(pages.value);
   let read = form.elements.read;
-  console.log(read.checked);
 
   if(title.value === '' || author.value === '' || pages.value === '') {
     alert(`Can't submit empty form`);
   } else if (pages.value <0 ) {
     alert(`Can't submit negative pages`);
   } else {
-  addBookToLibrary(title.value, author.value, pages.value, read.checked);
-  displayBooks();
+    addBookToLibrary(title.value, author.value, pages.value, read.checked);
+    displayBooks();
   }
 });
-
 
 // popup form code
 const openModalButtons = document.querySelectorAll('[data-modal-target]');
 const closeModalButtons = document.querySelectorAll('[data-close-button]');
 const overlay = document.getElementById('overlay');
+
 
 openModalButtons.forEach(button => {
   button.addEventListener('click', () => {
