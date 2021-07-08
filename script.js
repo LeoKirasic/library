@@ -15,24 +15,30 @@ function addBookToLibrary(title, author, pages, read) {
     myLibrary.push(book);
     
 }
-
 const container = document.querySelector('#book-container');
-let deleteButton = document.createElement('button');
+const deleteButton = document.createElement('button');
 
 let datasetCounter = 0;
 
 function displayBooks () {
   for(let i = 0; i < myLibrary.length; i++) {
     const book = document.createElement('div');
-    let deleteButton = document.createElement('button');
+    const deleteButton = document.createElement('button');
+    const readButton = document.createElement('button');
+
     deleteButton.classList.add('delete-button');
     deleteButton.dataset.index = 0;
+
     book.classList.add('book');
     book.dataset.index = 0;
     deleteButton.dataset.index = parseInt(datasetCounter);
     book.dataset.index = parseInt(datasetCounter);
-    // console.log(deleteButton.dataset.index)
+    deleteButton.dataset.index = parseInt(datasetCounter);
+
     book.textContent = myLibrary[datasetCounter].info();
+    console.log(datasetCounter);
+    book.appendChild(readButton);
+
     book.appendChild(deleteButton);
     container.appendChild(book);
 
@@ -45,7 +51,9 @@ function displayBooks () {
 
   }
 }
+  function changeReadStatus() {
 
+  }
 const submitButton = document.querySelector('#submit-button');
 
 submitButton.addEventListener(('click'), () => {
