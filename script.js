@@ -9,13 +9,11 @@ function Book (title, author, pages, read)  {
       return `${title} by ${author}, ${pages} pages, read: ${read}`;
     }
   }
-let counter = 0;
-
 function addBookToLibrary(title, author, pages, read) {
   
     const book = new Book(title, author, pages, read);
-    myLibrary[counter] = book;
-    counter++;
+    myLibrary.push(book);
+    
 }
 
 const container = document.querySelector('#book-container');
@@ -25,25 +23,23 @@ let datasetCounter = 0;
 
 function displayBooks () {
   for(let i = 0; i < myLibrary.length; i++) {
-    let book = document.createElement('div');
-    let deleteButton = document.createElement('button');
-    deleteButton.classList.add('delete-button');
-    deleteButton.dataset.index = 0;
+    const book = document.createElement('div');
+    // let deleteButton = document.createElement('button');
+    // deleteButton.classList.add('delete-button');
+    // deleteButton.dataset.index = 0;
     book.classList.add('book');
-    book.dataset.index = 0;
-    deleteButton.dataset.index += parseInt(datasetCounter);
-    console.log(deleteButton.dataset.index)
-    book.textContent = myLibrary[i].info();
-    book.appendChild(deleteButton);
+    // book.dataset.index = 0;
+    // deleteButton.dataset.index = parseInt(datasetCounter);
+    // book.dataset.index = parseInt(datasetCounter);
+    // console.log(deleteButton.dataset.index)
+    book.textContent = myLibrary[datasetCounter].info();
+    // book.appendChild(deleteButton);
     container.appendChild(book);
 
-    book.dataset.index += parseInt(datasetCounter);
     datasetCounter++;
     
   }
 }
-
-  //TODO something is bugged in either submitButton listener or displayBooks function 
 
 const submitButton = document.querySelector('#submit-button');
 
