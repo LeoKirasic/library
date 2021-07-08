@@ -24,20 +24,25 @@ let datasetCounter = 0;
 function displayBooks () {
   for(let i = 0; i < myLibrary.length; i++) {
     const book = document.createElement('div');
-    // let deleteButton = document.createElement('button');
-    // deleteButton.classList.add('delete-button');
-    // deleteButton.dataset.index = 0;
+    let deleteButton = document.createElement('button');
+    deleteButton.classList.add('delete-button');
+    deleteButton.dataset.index = 0;
     book.classList.add('book');
-    // book.dataset.index = 0;
-    // deleteButton.dataset.index = parseInt(datasetCounter);
-    // book.dataset.index = parseInt(datasetCounter);
+    book.dataset.index = 0;
+    deleteButton.dataset.index = parseInt(datasetCounter);
+    book.dataset.index = parseInt(datasetCounter);
     // console.log(deleteButton.dataset.index)
     book.textContent = myLibrary[datasetCounter].info();
-    // book.appendChild(deleteButton);
+    book.appendChild(deleteButton);
     container.appendChild(book);
 
     datasetCounter++;
     
+    deleteButton.addEventListener('click', () => {
+            myLibrary.splice(deleteButton.dataset.index, 1);
+            book.parentElement.removeChild(book);
+    });
+
   }
 }
 
