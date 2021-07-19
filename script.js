@@ -8,6 +8,13 @@ function Book (title, author, pages, read)  {
     this.info = function() {
       return `${title} by ${author}, ${pages} pages, read: ${read}`;
     }
+    // this.changeReadStatus = function (read) {
+    //   if(read === true) {
+    //     this.read = false;
+    //   } else {
+    //     this.read = true;
+    //   }
+    // }
   }
 function addBookToLibrary(title, author, pages, read) {
   
@@ -27,11 +34,14 @@ function displayBooks () {
     const readButton = document.createElement('button');
 
     deleteButton.classList.add('delete-button');
+    readButton.classList.add('read-button');
+
     deleteButton.dataset.index = 0;
+    read.dataset.index = 0;
 
     book.classList.add('book');
     book.dataset.index = 0;
-    deleteButton.dataset.index = parseInt(datasetCounter);
+    readButton.dataset.index = parseInt(datasetCounter);
     book.dataset.index = parseInt(datasetCounter);
     deleteButton.dataset.index = parseInt(datasetCounter);
 
@@ -49,11 +59,16 @@ function displayBooks () {
             book.parentElement.removeChild(book);
     });
 
+    readButton.addEventListener('click', () => {
+      if(myLibrary[readButton.dataset.index].read === true) {
+        myLibrary[readButton.dataset.index].read = false;
+      } else {
+        myLibrary[readButton.dataset.index].read = true;
+      }
+    });
   }
 }
-  function changeReadStatus() {
 
-  }
 const submitButton = document.querySelector('#submit-button');
 
 submitButton.addEventListener(('click'), () => {
