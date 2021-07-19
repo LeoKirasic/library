@@ -6,7 +6,7 @@ function Book (title, author, pages, read)  {
     this.read = read;
   
     this.info = function() {
-      return `${title} by ${author}, ${pages} pages, read: ${read}`;
+      return `${title} by ${author}, ${pages} pages, read: `;
     }
     // this.changeReadStatus = function (read) {
     //   if(read === true) {
@@ -23,7 +23,6 @@ function addBookToLibrary(title, author, pages, read) {
     
 }
 const container = document.querySelector('#book-container');
-const deleteButton = document.createElement('button');
 
 let datasetCounter = 0;
 
@@ -31,13 +30,13 @@ function displayBooks () {
   for(let i = 0; i < myLibrary.length; i++) {
     const book = document.createElement('div');
     const deleteButton = document.createElement('button');
-    const readButton = document.createElement('button');
-
+    const readButton = document.createElement('input');
+    readButton.setAttribute('type', 'checkbox');
     deleteButton.classList.add('delete-button');
     readButton.classList.add('read-button');
 
     deleteButton.dataset.index = 0;
-    read.dataset.index = 0;
+    readButton.dataset.index = 0;
 
     book.classList.add('book');
     book.dataset.index = 0;
@@ -76,14 +75,14 @@ submitButton.addEventListener(('click'), () => {
   let title = form.elements.title;
   let author = form.elements.author;
   let pages = form.elements.pages;
-  let read = form.elements.read;
+  let read = false;
 
   if(title.value === '' || author.value === '' || pages.value === '') {
     alert(`Can't submit empty form`);
   } else if (pages.value <0 ) {
     alert(`Can't submit negative pages`);
   } else {
-    addBookToLibrary(title.value, author.value, pages.value, read.checked);
+    addBookToLibrary(title.value, author.value, pages.value, read);
     displayBooks();
   }
 });
