@@ -6,7 +6,7 @@ function Book (title, author, pages, read)  {
     this.read = read;
   
     this.info = function() {
-      return `${title} by ${author}, ${pages} pages, read: `;
+      return `${title} by ${author}, ${pages} pages read: `;
     }
     // this.changeReadStatus = function (read) {
     //   if(read === true) {
