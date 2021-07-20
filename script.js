@@ -32,9 +32,10 @@ function displayBooks () {
     const deleteButton = document.createElement('button');
     const readButton = document.createElement('input');
     readButton.setAttribute('type', 'checkbox');
+    readButton.classList.add('checkbox');
     deleteButton.classList.add('delete-button');
     readButton.classList.add('read-button');
-
+    deleteButton.textContent = 'Delete';
     deleteButton.dataset.index = 0;
     readButton.dataset.index = 0;
 

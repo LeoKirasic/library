@@ -1,121 +1,147 @@
 :root {
-    --input-border: #8b8a8b;
-    --input-focus-h: 245;
-    --input-focus-s: 100%;
-    --input-focus-l: 42%;
-  }
+  --input-border: #8b8a8b;
+  --input-focus-h: 245;
+  --input-focus-s: 100%;
+  --input-focus-l: 42%;
+
+}
 html {
-    background-color: rgb(255, 255, 255);
+  background-color: rgb(255, 255, 255);
+	font-family: input-mono-narrow, monospace;
+
 }
 #book-container {
-    display: flex;
-    flex-wrap: wrap;
+  display: flex;
+  flex-wrap: wrap;
 }
 .book {
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    transition: 0.3s;
-    width: 200px;
-    margin:10px;
-    padding: 10px;
-    background-color: rgb(85, 76, 76);
-    color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  width: 200px;
+  margin: 10px;
+  padding: 10px;
+  background-color:#546e7a;
+  color: white;
 }
 
 .modal {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(0);
-    transition: 200ms ease-in-out;
-    border: 1px solid black;
-    border-radius: 10px;
-    z-index: 10;
-    background-color: white;
-    width: 500px;
-    max-width: 80%;
-    text-align: center;
-    font-size: 20px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: 200ms ease-in-out;
+  border: 1px solid black;
+  border-radius: 10px;
+  z-index: 10;
+  background-color: white;
+  width: 500px;
+  max-width: 80%;
+  text-align: center;
+  font-size: 20px;
 }
 
 .modal.active {
-    transform: translate(-50%, -50%) scale(1);
-    
+  transform: translate(-50%, -50%) scale(1);
 }
 
 .input {
-    font-size: 16px;
-    font-size: max(16px, 1em);
-    font-family: inherit;
-    padding: 0.25em 0.5em;
-    background-color: #fff;
-    border: 2px solid var(--input-border);
-    border-radius: 4px;
-    transition: 180ms box-shadow ease-in-out;
+  font-size: 16px;
+  font-size: max(16px, 1em);
+  font-family: inherit;
+  padding: 0.25em 0.5em;
+  background-color: #fff;
+  border: 2px solid var(--input-border);
+  border-radius: 4px;
+  transition: 180ms box-shadow ease-in-out;
 }
 .input:not(textarea) {
-    line-height: 1;
-    height: 2.25rem;
-  }
+  line-height: 1;
+  height: 2.25rem;
+}
 
-  .input:focus {
-  box-shadow: 0 0 0 3px hsla(var(--input-focus-h), var(--input-focus-s), calc(var(--input-focus-l) +
-          40%), 0.8);
+.input:focus {
+  box-shadow: 0 0 0 3px
+    hsla(
+      var(--input-focus-h),
+      var(--input-focus-s),
+      calc(var(--input-focus-l) + 40%),
+      0.8
+    );
 }
 
 .popup-header {
-    padding: 10px 15px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid black;
+  padding: 10px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid black;
 }
 
 .popup-header .title {
-    font-size: 1.25rem;
-    font-weight: bold;
+  font-size: 1.25rem;
+  font-weight: bold;
 }
 
 .popup-header .close-button {
-    cursor: pointer;
-    border: none;
-    outline: none;
-    background: none;
-    font-size: 1.5rem;
-    font-weight: bold;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: none;
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 .popup-body {
-    padding: 10px 15px;
+  padding: 10px 15px;
 }
 
 .input-heading {
-    padding: 10px;
+  padding: 10px;
 }
 
- #overlay {
-     position: fixed;
-     opacity: 0;
-     transition: 200ms ease-in-out;
-     top: 0;
-     left: 0;
-     right: 0;
-     bottom: 0;
-     background-color: rgba(0,0,0,0.5);
-     pointer-events: none;
- }
- #overlay.active {
-    pointer-events: all;
-    opacity: 1;
- }
- #add-book {
-     border: none;
-     background-color: transparent;
-     font-size: 3rem;
- }
- #add-book:hover {
-     transform: rotate(180deg);
-     transition-duration: 0.5s;
- }
- .close-button:hover {
-    transform: rotate(180deg);
-    transition-duration: 0.5s;
- }
+#overlay {
+  position: fixed;
+  opacity: 0;
+  transition: 200ms ease-in-out;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+}
+#overlay.active {
+  pointer-events: all;
+  opacity: 1;
+}
+#add-book {
+	font-weight: 500;
+	padding: 1rem 1.5rem;
+	border: 1px solid #000;
+	overflow: hidden;
+    cursor: pointer;
+}
+
+.close-button:hover {
+  transform: rotate(180deg);
+  transition-duration: 0.5s;
+}
+header {
+  display: flex;
+  justify-content:space-between;
+}
+#library {
+    font-size: 2rem;
+
+}
+.delete-button {
+    font-weight: 500;
+	padding: 1rem 1.5rem;
+	border: 1px solid #000;
+  color: white;
+  background-color: rgb(173, 45, 45);
+	overflow: hidden;
+    cursor: pointer;
+}
+.checkbox {
+
+}
