@@ -106,3 +106,16 @@ html {
     pointer-events: all;
     opacity: 1;
  }
+ #add-book {
+     border: none;
+     background-color: transparent;
+     font-size: 3rem;
+ }
+ #add-book:hover {
+     transform: rotate(180deg);
+     transition-duration: 0.5s;
+ }
+ .close-button:hover {
+    transform: rotate(180deg);
+    transition-duration: 0.5s;
+ }
